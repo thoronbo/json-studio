@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JSON 工坊 · JSON Studio</title>
+<meta name="author" content="深维工坊工作室 Deep Dimension Workshop">
+<meta name="copyright" content="深维工坊工作室 Deep Dimension Workshop">
+<meta name="description" content="格式化、压缩、排序与表格转换 JSON，出错时精确到行列。">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark" aria-hidden="true"><i></i><i></i></span>
+      <div class="brand-text">
+        <h1>JSON 工坊</h1>
+        <p>格式化 · 压缩 · 排序 · 表格转换</p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <button class="btn btn-ghost" id="sample-btn" type="button">载入示例</button>
+      <button class="btn btn-ghost" id="clear-btn" type="button">清空</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+
+    <section class="panel editor">
+      <div class="panel-head">
+        <h2>内容</h2>
+        <span class="count" id="char-count">0 字符</span>
+      </div>
+      <textarea id="source" spellcheck="false" placeholder="把 JSON 粘贴到这里，格式问题会标出具体行列"></textarea>
+      <div class="editor-foot">
+        <span id="parse-state">等待输入</span>
+      </div>
+    </section>
+
+    <aside class="panel sidebar">
+      <div class="panel-head"><h2>选项</h2></div>
+
+      <div class="field">
+        <div class="field-head"><span class="field-label">缩进</span></div>
+        <div class="chips" id="indent-chips">
+          <button type="button" data-indent="2" class="active">2 空格</button>
+          <button type="button" data-indent="4">4 空格</button>
+          <button type="button" data-indent="tab">Tab</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-head"><span class="field-label">概况</span></div>
+        <div class="stats" id="stats"></div>
+      </div>
+    </aside>
+
+    <section class="panel output">
+      <div class="panel-head">
+        <h2>结果</h2>
+        <div class="head-actions">
+          <div class="tabs" id="mode-tabs" role="tablist" aria-label="处理方式">
+            <button type="button" data-mode="format" class="active" role="tab" aria-selected="true">格式化</button>
+            <button type="button" data-mode="minify" role="tab" aria-selected="false">压缩</button>
+            <button type="button" data-mode="sort" role="tab" aria-selected="false">键排序</button>
+            <button type="button" data-mode="csv" role="tab" aria-selected="false">表格</button>
+          </div>
+          <button class="btn btn-ghost" id="copy-btn" type="button">复制</button>
+          <button class="btn btn-primary" id="download-btn" type="button">下载</button>
+        </div>
+      </div>
+
+      <pre class="preview" id="preview"></pre>
+
+      <div class="output-foot">
+        <span id="output-note">等待输入</span>
+        <span id="action-note"></span>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <span>JSON 工坊 · 开源版</span>
+    <span>© 2026 深维工坊工作室 Deep Dimension Workshop · MIT License</span>
+  </footer>
+
+</div>
+
+<script src="assets/js/json-core.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
